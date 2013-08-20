@@ -1,0 +1,22 @@
+.video-js .vjs-menu-button.vjs-resize-button .vjs-menu-content {
+	width: 4em !important;
+	height: 7em;
+	left: -2em !important;
+}
+
+.video-js .vjs-menu-button.vjs-resize-button .vjs-menu-content .vjs-menu-item {
+	width: 100%;
+	float: left;
+	font-size: 1.8em;
+	padding: 5px 0;
+}
+
+.video-js .vjs-fullscreen-control {
+	display: none !important;
+}
+
+.video-js {
+	-webkit-transition: all .7s ease;
+	-moz-transition: all .7s ease;
+	transition: all .7s ease;
+}
