@@ -469,7 +469,7 @@
 	
 	
 	
-	videojs.plugin('bvReporting', function(userOptions){
+	videojs.plugin('googleAnalytics', function(userOptions){
 		options = vjs.obj.merge(defaults, userOptions);
 		// Initializing
 		videojsRef = this;
