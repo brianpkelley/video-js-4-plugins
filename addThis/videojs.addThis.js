@@ -19,7 +19,10 @@
 		init: function(player, options){
 			
 			videojs.MenuItem.call(this, player, options);
-			//track.on('cuechange', vjs.bind(this, this.update));
+			if ( "embed" == options.kind ) { 
+				this.embedEl_ = new videojs.EmbedWindow(this.player(), {});
+				this.player().el().appendChild( this.embedEl_.el() );
+			}
 		}
 	});
 	
@@ -105,14 +108,8 @@
 				// Change this code to suit your needs
 				var embedCode = '<link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet"><script src="http://vjs.zencdn.net/4.1/video.js"></script>\n<video id="videojsplayer" class="video-js vjs-default-skin" controls preload="auto" \n\tposter="'+this.player().poster()+'"\n\tdata-setup=\'{}\'>\n\t<source src="'+src+'" type="video/mp4" />\n\t<p>Video Playback Not Supported</p>\n</video>';
 				// Create Elements
-				if ( this.embedEl_ ) {
-					this.embedEl_.fadeIn();
-				} else {
-					this.embedEl_ = new videojs.EmbedWindow(this.player(), { embedCode: embedCode });
-					this.player().el().appendChild( this.embedEl_.el() );
-					// Delay to allow the fade
-					setTimeout( videojs.bind(this, function() { this.embedEl_.fadeIn() }), 1);
-				}
+				this.embedEl_.setEmbedCode( embedCode );
+				this.embedEl_.show();
 				
 				[].slice.call( this.embedEl_.el().getElementsByTagName('textarea') )[0].select();
 				
@@ -300,18 +297,32 @@
 		/** @constructor */
 		init: function(player, options){
 			videojs.Component.call(this, player, options);
+			this.hide();
+			
 			this.exitEl_ = new videojs.ExitButton(player,{});
 			this.exitEl_.on('click', videojs.bind(this, function() {
-				this.fadeOut();
+				this.hide();
 			}));
 			this.el_.appendChild( this.exitEl_.el() );
+			
+			this.textAreaEl_ = document.createElement('textarea');
+			this.textAreaEl_.style.fontSize = "10px";
+			if ( options.embedCode ) {
+				this.setEmbedCode( options.embedCode );
+			}
+			
+			this.el_.appendChild( this.textAreaEl_ );
+		},
+		
+		setEmbedCode: function(embedCode) {
+			this.textAreaEl_.value = embedCode || "";
 		}
 	});
 	
 	videojs.EmbedWindow.prototype.createEl = function(player,options) {
 		return videojs.Component.prototype.createEl(player, {
-			className: 'vjs-embed-window vjs-fade-out',
-			innerHTML: '<h4 class="vjs-embed-title"><span class="icon-code"></span>  Embed Code</h4><textarea style="font-size: 10px;">'+this.options().embedCode+'</textarea>',
+			className: 'vjs-embed-window ',
+			innerHTML: '<h4 class="vjs-embed-title"><span class="icon-code"></span>  Embed Code</h4>',
 			'aria-live': 'polite', // let the screen reader user know that the text of the button may change
 			tabIndex: 0
 		});
