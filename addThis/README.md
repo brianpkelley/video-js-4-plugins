@@ -21,7 +21,7 @@ Just include the `addThis: {}` item in the `plugins` object for the default conf
   <script src="js/videojs.addThis.js"></script>
 </head>
 <body>
-  <video id="vid1" class="video-js vjs-blue-skin" controls preload="auto" width="420" height="236"
+  <video id="vid1" class="video-js vjs-default-skin" controls preload="auto" width="420" height="236"
       poster="//video2.bettervideo.com/video/PRE/JPG640x360/12.8886.jpg"
       data-setup='{"plugins":{"addThis":{"website_url": "http://www.google.com", "embed": true, "reddit":false,"delicious":false}}}'>
     <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
