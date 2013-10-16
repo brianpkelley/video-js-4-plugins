@@ -42,8 +42,8 @@ Just include the `addThis: {}` item in the `plugins` object for the default conf
   <title>HTML5 Video Player</title>
   
   <!-- Base Player -->
-  <link href="../../dist/video-js/video-js.min.css" rel="stylesheet" />
-  <script src="../../dist/video-js/video.dev.js"></script>
+  <link href="video-js.min.css" rel="stylesheet" />
+  <script src="video.dev.js"></script>
   
   <!-- Plugins -->
   <link href="videojs.addThis.css" rel="stylesheet" />
