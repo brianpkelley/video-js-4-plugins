@@ -1,3 +1,9 @@
+//
+// Author: Brian Kelley
+// Description: Creates a "share" menu in the control bar.  See the readme on github.
+// 				https://github.com/brianpkelley/video-js-4-plugins/blob/master/addThis/README.md
+//
+
 (function() {
 	
 	// AddThis optional parameters
@@ -19,7 +25,7 @@
 	
 	videojs.SocialItem.prototype.createEl = function(type, props) {
 		return vjs.Button.prototype.createEl.call(this, 'li', vjs.obj.merge({
-			className: 'vjs-social-menu-item',
+			className: 'vjs-menu-item',
 			innerHTML: '<span class="icon-'+this.options_['iconClass']+'"></span>'
 		}, props));
 	};
@@ -38,13 +44,13 @@
 		// Available Services - http://www.addthis.com/services/list
 		// http://support.addthis.com/customer/portal/articles/381265-addthis-sharing-endpoints
 		// URL - http://api.addthis.com/oexchange/0.8/forward/SERVICE_TAG/offer?OPTIONS
-		// 	Name	 						Description	 																			Type	 		Required?		 			Example
-		//	url	 							URL of the page being shared.				 											string			yes	 						http://addthis.com
-		//	title	 						Title of the page being shared.				 											string			no	 						AddThis Home Page
-		//	description				Short description of the page being shared.														string			no	 						AddThis: One button. Your content everywhere.
-		//	pubid	 						Your publisher profile ID (analytics).	 												string			no	 						addthis
-		//	email_template		Email template to use for email sharing (requires pubid param)										string			no	 						my_template
-		//	ct	 							Enable click tracking (shared page must have AddThis client code to measure clicks)	 	string			no							ct=1
+		// Name	 						Description	 																			Type	 		Required?		 			Example
+		// url	 							URL of the page being shared.				 											string			yes	 						http://addthis.com
+		// title	 						Title of the page being shared.				 											string			no	 						AddThis Home Page
+		// description						Short description of the page being shared.												string			no	 						AddThis: One button. Your content everywhere.
+		// pubid	 						Your publisher profile ID (analytics).	 												string			no	 						addthis
+		// email_template					Email template to use for email sharing (requires pubid param)							string			no	 						my_template
+		// ct	 							Enable click tracking (shared page must have AddThis client code to measure clicks)	 	string			no							ct=1
 		
 		var send = {
 			'url': share_url || document.location.href,
@@ -161,7 +167,7 @@
 	/** @constructor */
 	  init: function(player, options){
 			videojs.MenuButton.call(this, player, options);
-			
+			console.log( options, this.items )
 			if ( this.items.length > 4 ) {
 				this.menu.contentEl().style.width = "15em";
 				this.menu.contentEl().style.left = "-7.5em";
@@ -186,9 +192,11 @@
 	}
 	videojs.Social.prototype.onClick = function() {};
 	
-	videojs.Social.prototype.createItems = function(){
+	videojs.Social.prototype.createItems = function() {
 		var items = [], track;
 		var options = this.options();
+		
+		console.log( options );
 		
 		if ( options['facebook'] ) {
 			items.push(new videojs.SocialItem(this.player_, {
@@ -336,7 +344,7 @@
 	// it won't be called by Component.init (due to name obfuscation).
 	var createSocialButton = function(options) {
 	  var props = {
-		  className: 'vjs-social-button vjs-control vjs-menu-button icon-share-this',
+		  className: 'vjs-social-button vjs-control vjs-menu-button icon-share',
 		  innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text">' + ('Social') + '</span></div>',
 		  role: 'button',
 		  'aria-live': 'polite', // let the screen reader user know that the text of the button may change
@@ -348,6 +356,13 @@
 	var social;
 	videojs.plugin('addThis', function(options) {
 		options = options || {};
+		
+		if ( options.includeFontAwesome || options.includeFontAwesome === undefined ) {
+			var tempLink = document.createElement('link');
+			tempLink.href = '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css';
+			tempLink.rel = 'stylesheet';
+			document.getElementsByTagName('head')[0].appendChild( tempLink );
+		}
 		
 		if ( options.pubid ) {
 			pubid = options.pubid;
@@ -368,7 +383,8 @@
 		}
 		
 		var optionsClone = JSON.parse(JSON.stringify(options));
-	  optionsClone.el = createSocialButton(options);
+		console.log( options, optionsClone );
+		optionsClone.el = createSocialButton(options);
 		
 		
 	  social = new videojs.Social(this, optionsClone);
