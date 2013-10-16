@@ -2,6 +2,7 @@
 This creates a "share" menu in the control bar for video.js.  Currently it only supports creating links for the some of the more popular sites, and a "more" link that opens a new window with the entire list of shareable sites.
 
 ##Usage##
+#####This plugin requires you to use the unminified dev build#####
 Just include the `addThis: {}` item in the `plugins` object for the default config.  In the examples below, reddit and delicious have been disabled due to font-awesome not having icons for them.  I reccomend using the Font-Awesome-More set here: https://github.com/gregoryloucas/Fontstrap
 
 ####HTML####
