@@ -101,5 +101,6 @@ Just include the `addThis: {}` item in the `plugins` object for the default conf
 
 ##Useful Links##
 Available Services - http://www.addthis.com/services/list
+
 AddThis Endpoints - http://support.addthis.com/customer/portal/articles/381265-addthis-sharing-endpoints
 
