@@ -2,7 +2,7 @@
 This creates a "share" menu in the control bar for video.js.  Currently it only supports creating links for the some of the more popular sites, and a "more" link that opens a new window with the entire list of shareable sites.
 
 ##Usage##
-In the data-setup or setup object passed to videojs function.
+Just include the `addThis: {}` item in the `plugins` object for the default config.  In the examples below, reddit and delicious have been disabled due to font-awesome not having icons for them.  I reccomend using the Font-Awesome-More set here: https://github.com/gregoryloucas/Fontstrap
 
 ####HTML####
 ````html
@@ -78,3 +78,28 @@ In the data-setup or setup object passed to videojs function.
 </body>
 </html>
 ````
+
+##Options##
+####Enable links: ####
+- **facebook** *(boolean)*
+- **twitter** *(boolean)*
+- **googleplus** *(boolean)*
+- **linkedin** *(boolean)*
+- **pinterest** *(boolean)*
+- **delicious** *(boolean)*
+- **reddit** *(boolean)*
+- **email** *(boolean)*
+- **embed** *(boolean)*
+- **more** *(boolean)*
+- **website_url** *(string)* must start with http(s)://
+
+####Configuration: ####
+- **pubid** *(string)* Your publisher profile ID (analytics). (NOT REQUIRED to use this plugin)
+- **ct** *(string)* Enable click tracking (shared page must have AddThis client code to measure clicks)
+- **email_template** *(string)* Email template to use for email sharing (requires pubid param)
+- **share_url** *(string)* To share a different url than the current page, specify here.
+
+##Useful Links##
+Available Services - http://www.addthis.com/services/list
+AddThis Endpoints - http://support.addthis.com/customer/portal/articles/381265-addthis-sharing-endpoints
+
