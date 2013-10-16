@@ -387,7 +387,7 @@
 		if ( options.share_url ) {
 			share_url = options.share_url;
 		}
-		if ( options.website_url && options.website_url != "http://" && options.website_url != "") {
+		if ( options.website_url && options.website_url != /http(s)?:\/\//.test(options.website_url) && options.website_url != "") {
 			website_url = options.website_url;
 		} else {
 			delete options.website_url;
