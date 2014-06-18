@@ -81,14 +81,7 @@
 			return query;
 		}
 		
-		var src;
-		
-		if ( this.player().el().querySelector('video') ) { // HTML5
-			src = this.player().el().querySelector('video').src;
-		} else { // FLASH
-			var values = deserialize( this.player().el().querySelector('param[name=flashvars]').value )
-			src = decodeURIComponent( values.src );
-		}
+		var src = this.player().currentSrc();
 		
 		
 		switch ( kind ) {
@@ -106,7 +99,14 @@
 				var pluginStr = JSON.stringify( pluginObj );
 				
 				// Change this code to suit your needs
-				var embedCode = '<link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet"><script src="http://vjs.zencdn.net/4.1/video.js"></script>\n<video id="videojsplayer" class="video-js vjs-default-skin" controls preload="auto" \n\tposter="'+this.player().poster()+'"\n\tdata-setup=\'{}\'>\n\t<source src="'+src+'" type="video/mp4" />\n\t<p>Video Playback Not Supported</p>\n</video>';
+				var embedCode = [
+									'<link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet">',
+									'<script src="http://vjs.zencdn.net/4.1/video.js"></script>',
+									'<video id="videojsplayer" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360" poster="'+ (this.player().poster() || '' ) +'" data-setup=\'{"plugins":'+pluginStr+'}\'>',
+									'\t<source src="'+src+'" type="video/mp4" />',
+									'\t<p>Video Playback Not Supported</p>',
+									'</video>'
+								].join('\n');
 				// Create Elements
 				this.embedEl_.setEmbedCode( embedCode );
 				this.embedEl_.show();
