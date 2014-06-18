@@ -99,7 +99,6 @@
 				var pluginStr = JSON.stringify( pluginObj );
 				
 				// Change this code to suit your needs
-				var embedCode = '<link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet"><script src="http://vjs.zencdn.net/4.1/video.js"></script>\n<video id="videojsplayer" class="video-js vjs-default-skin" controls preload="auto" \n\tposter="'+this.player().poster()+'"\n\tdata-setup=\'{}\'>\n\t<source src="'+src+'" type="video/mp4" />\n\t<p>Video Playback Not Supported</p>\n</video>';
 				var embedCode = [
 									'<link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet">',
 									'<script src="http://vjs.zencdn.net/4.1/video.js"></script>',
