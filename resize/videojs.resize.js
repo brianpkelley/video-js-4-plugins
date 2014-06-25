@@ -1,7 +1,6 @@
 (function() {
 	
-	var bigSize = {};
-	var smallSize = {};
+
 	
 	// Main button
 	videojs.ResizeControl = videojs.MenuButton.extend({
@@ -17,8 +16,8 @@
 		var items = [], track;
 		var options = this.options();
 		
-		items.push(new videojs.LargerToggle(this.player_,{}));
-		items.push(new videojs.SmallerToggle(this.player_,{}));
+		items.push(new videojs.LargerToggle(this.player_,this.options_.bigSize));
+		items.push(new videojs.SmallerToggle(this.player_,this.options_.smallSize));
 		
 		console.log( items[0].el().style.width );
 		
@@ -46,8 +45,8 @@
 	};
 	
 	videojs.LargerToggle.prototype.onClick = function() {
-		this.player().el().style.height = bigSize.h + "px";
-		this.player().el().style.width = bigSize.w + "px";
+		this.player().el().style.height = this.options_.h + "px";
+		this.player().el().style.width = this.options_.w + "px";
 	}
 	
 	
@@ -71,46 +70,31 @@
 	};
 	
 	videojs.SmallerToggle.prototype.onClick = function() {
-		this.player().el().style.height = smallSize.h + "px";
-		this.player().el().style.width = smallSize.w + "px";
+		this.player().el().style.height = this.options_.h + "px";
+		this.player().el().style.width = this.options_.w + "px";
 	}
 	
 	
-	// Plugin Code
-	var createResizeButton = function(options) {
-	  var props = {
-		  className: 'vjs-resize-button vjs-control vjs-menu-button icon-desktop',
-		  innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text">' + ('Enlarge') + '</span></div>',
-		  role: 'button',
-		  'aria-live': 'polite', // let the screen reader user know that the text of the button may change
-		  tabIndex: 0
-		};
-	  return videojs.Component.prototype.createEl(null, props);
-	};
-	
 	videojs.plugin('resize', function(options) {
 		var player = this.el();
+		var newOpts = {};
 		options = options || {};
-		
-		if ( options.size.h > player.offsetHeight ) {
-			smallSize = {
-				h: player.offsetHeight,
-				w: player.offsetWidth
-			};
-			bigSize = options.size;
-		} else {
-			bigSize = {
-				h: player.offsetHeight,
-				w: player.offsetWidth
-			};
-			smallSize = options.size;
-		}
 
-		var optionsClone = JSON.parse(JSON.stringify(options));
-	  optionsClone.el = createResizeButton( options );
-		
-		
-	  var resize = new videojs.ResizeControl(this, optionsClone);
-	  this.controlBar.el().appendChild(resize.el());
+		if ( options.size.h > player.offsetHeight ) {
+			newOpts.smallSize = {
+				h: player.offsetHeight,
+				w: player.offsetWidth
+			};
+			newOpts.bigSize = options.size;
+		} else {
+			newOpts.bigSize = {
+				h: player.offsetHeight,
+				w: player.offsetWidth
+			};
+			newOpts.smallSize = options.size;
+		}
+		var resize = this.controlBar.addChild( 'resizeControl', newOpts );
+
+		this.controlBar.el().className += " vjs-does-resize";
 	});
 })();
