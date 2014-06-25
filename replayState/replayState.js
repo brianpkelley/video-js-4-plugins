@@ -4,7 +4,6 @@
 	
 	vjs.PlayToggle.prototype.removeRestart = function() {
 		setTimeout( videojs.bind( this, function() {
-			console.log( "remove restart" );
 			vjs.removeClass(this.el_, 'icon-undo');
 		}), 1);
 	};
@@ -38,7 +37,6 @@
 			this.removeRestart_ = videojs.bind( this, function() {
 				vjs.removeClass(this.el_, 'icon-undo');
 			});
-			console.log( "is restart" );
 			this.player_.one('playlistautoload', this.removeRestart_ );
 		} else {
 			vjs.addClass(this.el_, 'vjs-paused');
