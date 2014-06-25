@@ -90,10 +90,6 @@
 			case 'embed':
 				
 				// Get current theme
-				//console.log( this.player(), this.player().el(), this.player().el().className)
-				theme = /\s?vjs-(.*?)-skin\s?/gi.exec( this.player().el().className )[1];
-				console.log( this.player() );
-				
 				
 				var pluginObj = this.player().options().plugins;
 				var pluginStr = JSON.stringify( pluginObj );
@@ -164,7 +160,7 @@
 	/** @constructor */
 	  init: function(player, options){
 			videojs.MenuButton.call(this, player, options);
-			console.log( options, this.items )
+	
 			if ( this.items.length > 4 ) {
 				this.menu.contentEl().style.width = "15em";
 				this.menu.contentEl().style.left = "-7.5em";
@@ -192,8 +188,6 @@
 	videojs.Social.prototype.createItems = function() {
 		var items = [], track;
 		var options = this.options();
-		
-		console.log( options );
 		
 		if ( options['facebook'] ) {
 			items.push(new videojs.SocialItem(this.player_, {
@@ -394,7 +388,6 @@
 		}
 		
 		var optionsClone = JSON.parse(JSON.stringify(options));
-		console.log( options, optionsClone );
 		optionsClone.el = createSocialButton(options);
 		
 		
