@@ -1,0 +1,5 @@
+.video-js .vjs-play-control.icon-undo::before,
+.video-js .vjs-big-play-button.icon-undo::before {
+	content: "\f0e2" !important;
+	font-family: FontAwesome !important;
+}

@@ -1,0 +1,112 @@
+.vjs-call-to-action {
+	background: rgba(25,25,25,.6);
+	display: none;
+
+	width: 100%;
+	height: 100%;
+
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+
+
+	h2 {
+		font-size: 32px;
+		color: #fff;
+		text-align: center;
+	}
+
+	p {
+		margin: 1em;
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.link-container {
+		text-align: center;
+		width: 100%;
+
+		position: absolute;
+		bottom: 75px;
+
+		a {
+			display: inline-block;
+
+			padding: .5em 1em;
+
+			font-size: 3em;
+			font-weight: bold;
+
+			text-align: center;
+			text-decoration: none;
+
+			color: #fff;
+
+			background: #e48f2f;
+
+			-webkit-box-shadow: 0 5px 0 0 rgba(234, 98, 1, 1), 0 5px 15px 0 rgba(0,0,0,1);
+			box-shadow: 0 5px 0 0 rgba(234, 98, 1, 1), 0 5px 15px 0 rgba(0,0,0,1);
+
+			border-radius: 15px;
+
+			&:hover {
+				margin-top: 1px;
+				-webkit-box-shadow: 0 4px 0 0 rgba(234, 98, 1, 1), 0 4px 13px 0 rgba(0,0,0,1);
+				box-shadow: 0 4px 0 0 rgba(234, 98, 1, 1), 0 4px 13px 0 rgba(0,0,0,1);
+			}
+		}
+	}
+
+
+	.vjs-control {
+
+			width: 2em;
+			height: 1.5em;
+
+			&.vjs-exit-button {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				font-size: 20px;
+				cursor: pointer;
+				color: #fff;
+			}
+
+			&.vjs-pause-button {
+				float: none;
+				display: inline-block;
+				&:before {
+					position: static;
+					display: inline-block;
+					width: auto;
+					height: auto;
+				}
+			}
+		}
+
+
+
+	.vjs-display-timer {
+		position: absolute;
+		bottom: 30px;
+		right: 10px;
+		color: #aaa;
+
+		span {
+			font-weight: normal;
+			font-size: 14px;
+		}
+
+		.vjs-time-left {
+			font-weight: bold;
+			font-size: 20px;
+			color: #fff;
+			width: 50px;
+			text-align: right;
+			display: inline-block;
+		}
+	}
+
+}
