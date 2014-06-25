@@ -1,0 +1,38 @@
+.vjs-dim-the-lights {
+	cursor: pointer;
+	float: right !important;
+}
+
+.vjs-dim-the-lights.vjs-dim-toggle {
+	opacity: .5;
+}
+
+
+.vjs-dim-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	opacity: .0;
+	display: none;
+	
+	-webkit-transition: opacity .35s ease-in;
+	-moz-transition: opacity .35s ease-in;
+	-ms-transition: opacity .35s ease-in;
+	-o-transition: opacity .35s ease-in;
+	transition: opacity .35s ease-in;
+	
+}
+
+.vjs-dim-overlay.vjs-dim-off {
+	
+	opacity: .8;
+}
+
+.vjs-dim-focus {
+	position: absolute;
+	z-index: 20000;
+}

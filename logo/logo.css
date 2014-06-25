@@ -1,0 +1,9 @@
+.video-js .vjs-control.vjs-logo-control {
+	background-repeat: no-repeat;
+	background-position: center 3px;
+	float: right !important;
+	
+	min-width: 80px;
+	
+	/*cursor: pointer;*/
+}

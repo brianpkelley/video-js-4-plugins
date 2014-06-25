@@ -1,0 +1,20 @@
+
+
+.video-js-responsive-container.vjs-horizontal-playlist {
+	margin-bottom: 130px;
+}
+.video-js-responsive-container.vjs-vertical-playlist .video-js {
+	width: calc( 100% - 150px ) !important; /* calc( 100% - 150px) is used to include space for vertical playlist */
+}
+
+/*
+* 16:9 = 56.25%
+* 4:3 = 75%
+*
+* Using a vertical playlist we need to dynamically calculate the padding.
+* 16:9 = calc( 56.25% - 84px )
+* 4:3 = calc( 75% - 112px )
+*
+**/
+.video-js-responsive-container.vjs-sd.vjs-vertical-playlist {	padding-top: calc( 75% - 112px ); }
+.video-js-responsive-container.vjs-hd.vjs-vertical-playlist { padding-top: calc( 56.25% - 84px ); }
