@@ -80,18 +80,18 @@
 		var newOpts = {};
 		options = options || {};
 
-		if ( options.size.h > player.offsetHeight ) {
+		if ( options.h > player.offsetHeight ) {
 			newOpts.smallSize = {
 				h: player.offsetHeight,
 				w: player.offsetWidth
 			};
-			newOpts.bigSize = options.size;
+			newOpts.bigSize = options;
 		} else {
 			newOpts.bigSize = {
 				h: player.offsetHeight,
 				w: player.offsetWidth
 			};
-			newOpts.smallSize = options.size;
+			newOpts.smallSize = options;
 		}
 		var resize = this.controlBar.addChild( 'resizeControl', newOpts );
 
