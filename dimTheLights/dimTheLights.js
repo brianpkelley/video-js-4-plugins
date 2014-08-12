@@ -74,11 +74,7 @@
 	
 	/** @namespace plugins.dimTheLights */
 	/**
-	 * Function responsible for auto playing and muting the player when a video loads.
-	 * Applies the classes "vjs-automute" and "vjs-automute-restart" to the videojs.bigPlayButton.
-	 * Once a user interacts with the player either by click on the bigPlayButton or by loading a new video, these classes are removed.
-	 *
-	 * @plugindesc Adds an overlay to the page that will darken the surrounding areas.
+	 * Adds an overlay to the page that will darken the surrounding areas.
 	 *
 	 * @function dimTheLights
 	 * @memberof plugins.dimTheLights
