@@ -43,9 +43,6 @@
 	top: 1em;
 	right: 1em;
 }
-.video-js > .vjs-control.vjs-share-button:hover:before {
-	text-shadow: 0 0 .3em rgba( 255,255,255,0.8);
-}
 
 .video-js > .vjs-control.vjs-share-button:hover:before {
 	/*text-shadow: 0 0 .3em rgba( 255,255,255,0.8);*/
@@ -62,10 +59,16 @@
 }
 
 .video-js > .vjs-control.vjs-share-button:before {
-	content: '\f14d';
-	font-size: 2em;
-	color: rgba(255,255,255,0.75);
-	text-shadow: 0 0 .5em rgba(0,0,0,0.8);
+	content: '\f064';
+	font-size: 1.5em;
+	//color: @main-font-color;
+	.background-color-with-alpha(@control-bg-color, @control-bg-alpha);
+	padding: 10px;
+	height: 1em;
+	line-height: 1em;
+	border-radius: 15%;
+	width: auto;
+	height: 2.25em;
 }
 
 
