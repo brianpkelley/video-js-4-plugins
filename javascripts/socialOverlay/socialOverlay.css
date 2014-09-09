@@ -20,6 +20,8 @@
 	-webkit-transition: .75s all;
 	transition: .75s all;
 	
+	z-index: 100;
+	
 	/* Root "Table" element for hack */
 	display: table;
 	height: 100%;
@@ -45,7 +47,16 @@
 	text-shadow: 0 0 .3em rgba( 255,255,255,0.8);
 }
 
+.video-js > .vjs-control.vjs-share-button:hover:before {
+	/*text-shadow: 0 0 .3em rgba( 255,255,255,0.8);*/
+	background: rgba( 0,0,0,0.5 );
+}
+
 /* The styles for the button on a control bar */
+.vjs-control-bar .vjs-control.vjs-share-button {
+	float: right;
+}
+
 .vjs-control-bar .vjs-control.vjs-share-button:before {
 	content: '\f064';
 }
