@@ -297,7 +297,7 @@
 		
 	};
 
-	videojs.plugin( 'sharingPlugin', pluginFn );
+	videojs.plugin( 'socialOverlay', pluginFn );
 	
 	
 	
