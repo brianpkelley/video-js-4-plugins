@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+	
+<head lang='en-us'>
+	<meta charset="utf-8" />
+	<title>new Embed Code</title>
+	
+	<link href="http://vjs.zencdn.net/4.7/video-js.css" rel="stylesheet">
+	<script src="http://vjs.zencdn.net/4.7/video.js"></script>
+	
+	<link href="../javascripts/socialOverlay/socialOverlay.css" rel="stylesheet" />
+	<script src="../javascripts/socialOverlay/socialOverlay.js"></script>
+	
+	
+	
+	<style>
+		.video-container {
+			width: 640px;
+			margin: 0 auto;
+		}
+		pre {
+			white-space: pre-wrap;
+		}
+		pre.prettyprint ol {
+			margin: 0;
+			padding: 0;
+			-webkit-margin-before: 0;
+			-webkit-margin-after: 0;
+			list-style: none;
+		}
+		
+		pre {
+			font-size: 10px;
+		}
+		
+		blockquote {
+			background-color: #fcf8f2;
+			border-color: #f0ad4e;
+		}
+		blockquote.red {
+			background-color: #fdf7f7;
+			border-color: #d9534f;
+		}
+		blockquote.red h4 {
+			color: #d9534f;
+		}
+		blockquote p {
+			font-size: 12px;
+			font-weight: 400;
+		}
+	</style>
+	
+</head>
+
+
+<body>
+	<div class="video-container">
+		<video id="video_1" class="video-js vjs-default-skin" preload="auto" controls width="640" height="360" poster="">
+			<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4"/>
+			<!-- Chapters are currently broken in video.js -->
+		</video>
+		<script>
+			videojs('video_1', {
+				"techOrder": ["html5", "flash"],
+				"plugins":{
+					"socialOverlay": {}
+				}
+			}, function(){
+				console.log(" Player (this) is initialized and ready.");
+			});
+		</script>
+		
+		
+	</div>
+</body>
+	
