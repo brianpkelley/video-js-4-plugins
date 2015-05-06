@@ -156,130 +156,126 @@
 	/***********************************************
 	 * Social Menu Button
 	 ***********************************************/
-	videojs.Social = videojs.MenuButton.extend({
-	/** @constructor */
-	  init: function(player, options){
+		videojs.SocialButton = videojs.MenuButton.extend({
+		init: function(player, options){
 			videojs.MenuButton.call(this, player, options);
-	
+
 			if ( this.items.length > 4 ) {
 				this.menu.contentEl().style.width = "15em";
 				this.menu.contentEl().style.left = "-7.5em";
 			}
-			
-				
+
+
 			this.on('click', this.onClick);
-	  }
+		}
 	});
-	videojs.Social.prototype.options_ = {
+
+
+	videojs.SocialButton.prototype.options_ = {
 		facebook: true,
 		twitter: true,
 		googleplus: true,
 		linkedin: true,
 		pinterest: true,
-		delicious: true,
-		reddit: true,
+		delicious: false,
+		reddit: false,
 		email: true,
 		embed: false,
 		//link: false,
 		more: true
-	}
-	videojs.Social.prototype.onClick = function() {};
+	};
+
+	videojs.SocialButton.prototype.available = {
+		facebook: {
+			'label': 'Facebook',
+			'kind': 'facebook',
+			'iconClass': 'facebook'
+		},
+		twitter: {
+			'label': 'Twitter',
+			'kind': 'twitter',
+			'iconClass': 'twitter'
+		},
+		googleplus: {
+			'label': 'Google+',
+			'kind': 'google_plusone_share',
+			'iconClass': 'google-plus'
+		},
+		linkedin: {
+			'label': 'LinkedIn+',
+			'kind': 'linkedin',
+			'iconClass': 'linkedin'
+		},
+		pinterest: {
+			'label': 'Pinterest+',
+			'kind': 'pinterest',
+			'iconClass': 'pinterest'
+		},
+		delicious: {
+			'label': 'Delicious',
+			'kind': 'delicious',
+			'iconClass': 'delicious'
+		},
+		reddit: {
+			'label': 'Reddit',
+			'kind': 'reddit',
+			'iconClass': 'reddit'
+		},
+		more: {
+			'label': 'More Services',
+			'kind': 'more',
+			'iconClass': 'plus'
+		},
+		email: {
+			'label': 'Email',
+			'kind': 'email',
+			'iconClass': 'envelope'
+		},
+		embed: {
+			'label': 'Embed',
+			'kind': 'embed',
+			'iconClass': 'code'
+		},
+		website_url: {
+			'label': 'Link',
+			'kind': 'link',
+			'iconClass': 'globe'
+		},
+	};
+
+	videojs.SocialButton.prototype.buttonText = 'Social';
+	/*videojs.SocialButton.prototype.createEl = function( props ) {
+		return videojs.Component.prototype.createEl('div', {
+			//className: 'vjs-social-button vjs-control vjs-menu-button '',
+			//innerHTML: '<div class="vjs-control-content"><span class="vjs-control-text">' + ('Social') + '</span></div>',
+			role: 'button',
+			'aria-live': 'polite', // let the screen reader user know that the text of the button may change
+			tabIndex: 0
+		});
+	};*/
+	vjs.SocialButton.prototype.buildCSSClass = function(){
+		return 'vjs-social-button vjs-control icon-share ' + vjs.MenuButton.prototype.buildCSSClass.call(this);
+	};
 	
-	videojs.Social.prototype.createItems = function() {
+
+	/**
+	 * Override default
+	 */
+	videojs.SocialButton.prototype.onClick = function() {};
+
+	/**
+	 * Responsible for creating the vjs.SocialItems to add to the menu
+	 */
+	videojs.SocialButton.prototype.createItems = function(){
 		var items = [], track;
 		var options = this.options();
-		
-		if ( options['facebook'] ) {
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Facebook',
-					'kind': 'facebook',
-					'iconClass': 'facebook'
-			}));
+
+		for ( var item in this.available ) {
+			if ( this.available.hasOwnProperty( item ) && options[item] ) {
+				items.push(new videojs.SocialItem(this.player_, this.available[item] ));
+			}
 		}
-		
-		if ( options['twitter'] ) {
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Twitter',
-					'kind': 'twitter',
-					'iconClass': 'twitter'
-			}));
-		}
-		
-		if ( options['googleplus'] ) {
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Google+',
-					'kind': 'google_plusone_share',
-					'iconClass': 'google-plus'
-			}));
-		}
-		
-		if ( options['linkedin'] ) {
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'LinkedIn+',
-					'kind': 'linkedin',
-					'iconClass': 'linkedin'
-			}));
-		}
-		
-		if ( options['pinterest'] ) {	
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Pinterest+',
-					'kind': 'pinterest',
-					'iconClass': 'pinterest'
-			}));
-		}
-		
-		if ( options['delicious'] ) {	
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Delicious',
-					'kind': 'delicious',
-					'iconClass': 'delicious'
-			}));
-		}
-		
-		if ( options['reddit'] ) {	
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Reddit',
-					'kind': 'reddit',
-					'iconClass': 'reddit'
-			}));
-		}
-		
-		if ( options['more'] ) {	
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'More Services',
-					'kind': 'more',
-					'iconClass': 'plus'
-			}));
-		}
-		
-		
-		if ( options['email'] ) {	
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Email',
-					'kind': 'email',
-					'iconClass': 'envelope'
-			}));
-		}
-		
-		if ( options['embed'] ) {	
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Embed',
-					'kind': 'embed',
-					'iconClass': 'code'
-			}));
-		}
-		
-		if ( options['website_url'] ) {	
-			items.push(new videojs.SocialItem(this.player_, {
-					'label': 'Link',
-					'kind': 'link',
-					'iconClass': 'globe'
-			}));
-		}
-		
-		
-		
+
 		return items;
 	};
 	
@@ -391,7 +387,6 @@
 		optionsClone.el = createSocialButton(options);
 		
 		
-	  social = new videojs.Social(this, optionsClone);
-	  this.controlBar.el().appendChild(social.el());
+		social = this.controlBar.addChild( 'socialButton', options );
 	});
 })();
