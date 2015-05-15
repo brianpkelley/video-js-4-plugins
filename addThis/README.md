@@ -67,7 +67,7 @@ Just include the `addThis: {}` item in the `plugins` object for the default conf
 			plugins: {
 				addThis: {
 				  reddit: false,
-				  delecious: false,
+				  delicious: false,
 				  website_url: "http://www.google.com"
 				}
 			}
