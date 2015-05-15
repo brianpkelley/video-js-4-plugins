@@ -1,4 +1,4 @@
-Creating this plugin: http://tastybytes.net/creating-a-video-js-plugin/'
+Creating this plugin: http://tastybytes.net/creating-a-video-js-plugin/
 
 Demo: http://brianpkelley.github.io/video-js-4-plugins/demos/socialOverlay.html
 
