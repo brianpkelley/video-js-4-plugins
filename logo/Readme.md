@@ -8,21 +8,21 @@
 
 ```javascript
 <script>
-  videojs("video-js-1", {
-	height: 267,
-  width: 640,
-  plugins: {
-  	logo: {
-        src: "http://www.3playmedia.com/ui/images/Video-js-logo.png",
-        alt: "Logo Alt Text",
-        url: "http://www.videojs.com",
-        width: '50px'
-      }
-    }
-  }, function(){
-  	// Player Ready.  
-    // this = videojs('video-js-1');
-  });
+	videojs("video-js-1", {
+		height: 267,
+		width: 640,
+		plugins: {
+			logo: {
+				src: "http://www.3playmedia.com/ui/images/Video-js-logo.png",
+				alt: "Logo Alt Text",
+				url: "http://www.videojs.com",
+				width: '50px'
+			}
+		}
+	}, function(){
+		// Player Ready.  
+		// this = videojs('video-js-1');
+	});
 </script>
 ```
 
